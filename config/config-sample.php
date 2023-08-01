@@ -29,3 +29,14 @@ $port = 465;
 
 //$smtp = PHPMailer::ENCRYPTION_STARTTLS;
 //$port = 587;
+
+
+// allow only specific IPs
+$allowed_remotes = array(
+'127.0.0.1',
+'::1',
+'add.your.ip.here'
+);
+
+// or whitelist all IPs
+$allowed_remotes = '*';

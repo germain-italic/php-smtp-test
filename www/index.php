@@ -10,6 +10,14 @@ file_exists($conf) || die('Missing config file, please fill and rename /config/c
 include $conf;
 
 
+if (!isset($allowed_remotes) || $allowed_remotes != '*') {
+    if ( !(in_array(@$_SERVER['REMOTE_ADDR'], $allowed_remotes, true)  ) ) {
+        header('HTTP/1.0 404 Not found.');
+        exit();
+    }
+}
+
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
